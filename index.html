@@ -7,18 +7,16 @@
 </head>
 <body>
 
-<audio id="player" src="sound.mp3"></audio>
+<audio id="player" src="sound.mp3" autoplay muted loop></audio>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let audio = document.getElementById('player');
-
-        function playAudio() {
-            audio.play().catch(error => console.log('Автовоспроизведение заблокировано:', error));
-            document.removeEventListener('click', playAudio);
-        }
-
-        document.addEventListener('click', playAudio);
+    document.addEventListener("DOMContentLoaded", function() {
+        let audio = document.getElementById("player");
+        audio.play().then(() => {
+            setTimeout(() => {
+                audio.muted = false; // Включаем звук через небольшую задержку
+            }, 500);
+        }).catch(error => console.log("Автовоспроизведение заблокировано:", error));
     });
 </script>
 
