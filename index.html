@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автовоспроизведение</title>
+</head>
+<body>
+
+<audio id="player" src="sound.mp3"></audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let audio = document.getElementById('player');
+
+        function playAudio() {
+            audio.play().catch(error => console.log('Автовоспроизведение заблокировано:', error));
+            document.removeEventListener('click', playAudio);
+        }
+
+        document.addEventListener('click', playAudio);
+    });
+</script>
+
+</body>
+</html>
